@@ -1,4 +1,4 @@
-# rag.py
+import json
 from langchain_core.globals import set_verbose, set_debug
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain.schema.output_parser import StrOutputParser
@@ -20,10 +20,15 @@ logger = logging.getLogger(__name__)
 class ChatPDF:
     """A class for handling PDF ingestion and question answering using RAG."""
 
-    def __init__(self, llm_model: str = "deepseek-r1:latest", embedding_model: str = "mxbai-embed-large"):
+    def __init__(self):
         """
-        Initialize the ChatPDF instance with an LLM and embedding model.
+        Initialize the ChatPDF instance with an LLM and embedding model from config.json.
         """
+        with open("config.json") as f:
+            config = json.load(f)
+        llm_model = config.get("llm_model")
+        embedding_model = config.get("embedding_model")
+
         self.model = ChatOllama(model=llm_model)
         self.embeddings = OllamaEmbeddings(model=embedding_model)
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=100)

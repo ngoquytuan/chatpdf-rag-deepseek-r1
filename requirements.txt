@@ -5,3 +5,7 @@ langchain_community
 streamlit-chat
 pypdf
 chromadb
+python-dotenv
+langchain-groq
+langchain-google-genai
+langchain-openai
