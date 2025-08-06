@@ -28,6 +28,7 @@ cd chatpdf-rag-deepseek-r1
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+PS D:\CodeUnderTest\chatpdf-rag> venv\Scripts\Activate
 ```
 
 ### 3. Install Dependencies
